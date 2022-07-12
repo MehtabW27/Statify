@@ -5,10 +5,10 @@ module.exports = {
   ],
   theme: {
     screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '968px',
-      xl: '1440px'
+      // sm: '480px',
+      // md: '768px',
+      // lg: '968px',
+      // xl: '1440px'
     },
     extend: {
       colors: {
@@ -20,6 +20,10 @@ module.exports = {
         'spotifygreen': '#1DB954',
         'spotifywhite': '#FFFFFF',
         'spotifyblack': '#191414'
+      },
+      fontFamily: {
+        worksans: ['Work Sans', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif']
       }
     },
   },
