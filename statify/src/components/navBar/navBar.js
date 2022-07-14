@@ -9,23 +9,24 @@ import {Link} from 'react-router-dom';
 
 function NavBar() {
     return (
-        <nav className="relative mx-auto p-1 shadow-xl">
+        <nav className="relative mx-auto p-1 shadow-xl bg-zinc-800">
             {/* flex container */}
             <div className="flex  items-center justify-evenly">
                 {/* logo */}
-                <div className="text-2xl cursor-pointer flex items-center font-poppins">
+                <div className="text-2xl cursor-pointer flex items-center font-poppins text-pearmint">
                     <span className="mr-4 p-2">
                     <i class="fa-brands fa-spotify fa-2x"></i>
                     </span>
                     Statify
                 </div>
-                <i className="fa-solid fa-house fa-2x hover:text-pearmint"></i>
+                
+                <i className="fa-solid fa-house fa-2x hover:text-green-500"></i>
 
-                <i className="fa-solid fa-heart fa-2x hover:text-pearmint"></i>
+                <i className="fa-solid fa-heart fa-2x hover:text-green-500"></i>
 
-                <i className="fa-solid fa-chart-line fa-2x hover:text-pearmint"></i>
+                <i className="fa-solid fa-chart-line fa-2x hover:text-green-500"></i>
 
-                <i className="fa-solid fa-earth-americas fa-2x hover:text-pearmint"></i>
+                <i className="fa-solid fa-earth-americas fa-2x hover:text-green-500"></i>
 
             </div>
         </nav>

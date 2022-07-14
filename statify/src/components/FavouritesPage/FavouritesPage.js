@@ -1,30 +1,89 @@
 import React from 'react';
-import MediumCard from '../mediumCard/medCard';
-
+import MediumCardSong from '../mediumCardSong/medCardSong';
+import MediumCardArtist from '../mediumCardArtists/mediumCardArtists';
+import TabBar from '../AnimatedTabBar/TabBar';
 
 function FavouritesPage() {
   return (
-    <div className="w-full min-h-screen bg-blue-50 p-6">
-      <div className="flex flex-wrap justify-center">
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
-        <MediumCard />
+    <div className="w-full p-6 bg-neutral-900 ">
+      <div className=''>
+        <TabBar btn1={"Songs"} btn2={"Artists"} btn3={"Albums"}/>
       </div>
+      <div className="flex flex-wrap justify-center scroll-smooth overflow-y-scroll h-screen">
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+        <MediumCardSong />
+      </div>
+      <TabBar btn1={"4 Weeks"} btn2={"6 Months"} btn3={"Lifetime"} />
     </div>
   );
 }
