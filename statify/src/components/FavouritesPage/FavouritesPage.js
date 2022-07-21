@@ -1,7 +1,9 @@
 import React from 'react';
 import MediumCardSong from '../mediumCardSong/medCardSong';
 import MediumCardArtist from '../mediumCardArtists/mediumCardArtists';
+import MediumCardAlbum from '../mediumCardAlbums/mediumCardAlbums';
 import TabBar from '../AnimatedTabBar/TabBar';
+import SongModal from '../modals/SongModal';
 
 function FavouritesPage() {
   return (
