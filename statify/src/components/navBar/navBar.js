@@ -1,13 +1,15 @@
 import React from "react";
 import './navBar.css';
 import {Link} from 'react-router-dom'; 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { useState } from "react";
 
 
 // add container tag if u want it to be blocky, for outer nav
 
 function NavBar(props) {
+
+
+    const [type, setType] = useState("tracks");
     return (
         <nav className="relative mx-auto p-1 shadow-xl bg-zinc-800">
             {/* flex container */}
@@ -19,6 +21,19 @@ function NavBar(props) {
                     </span>
                     Statify
                 </div>
+
+
+
+                <div className={"font-semibold text-2xl text-neutral-400" + (type === "tracks" ? ' active text-pearmint' : ' hover:text-gray-300' )} onClick={() => {setType("tracks")}}>
+                    <i class="fa-brands fa-itunes-note p-1 mr-1"></i>
+                    Songs
+                </div>
+
+                <div className={"font-semibold text-neutral-400 text-2xl" + (type === "artists" ? ' active text-pearmint' : ' hover:text-gray-300' )} onClick={() => {setType("artists")}}>
+                    <i class="fa-solid fa-headphones-simple p-1 mr-1"></i>
+                    Artists
+                </div>
+
 
                 {props.TokenState && <button className="text-neutral-900 text-lg font-bold py-2 px-4 m-4 bg-pearmint rounded-3xl " onClick={props.LogOut}>Log Out</button>}
                 

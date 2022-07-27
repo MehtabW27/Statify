@@ -1,29 +1,34 @@
 import React, { useEffect } from 'react';
-import { useState} from 'react';
+import { useState } from 'react';
 import SongModal from '../modals/SongModal';
+import Modal from 'react-responsive-modal';
 
 function MediumCardSong(props) {
 
-    const [ModalOn, SetModalOn] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    
+    useEffect(() => {
+        setIsOpen(false);
+    }, [isOpen])
 
-    const logout = () => {
-        SetModalOn(false);
-        console.log("this is modalon val: " + ModalOn);
-    };
+    const onOpenModal = () => setIsOpen(true);
+    const onCloseModal = () => {
+        setIsOpen(false);
+    }
 
   return (
-      <div className={" flex flex-col  m-2 overflow-hidden duration-300 w-52 h-72 " + (ModalOn ? 'transition-none' : 'hover:scale-105 transition-all')} onClick={() => {SetModalOn(true);}}>
+      <div className={" flex flex-col  m-2 overflow-hidden duration-300 w-64 " + (isOpen ? 'transition-none' : 'hover:scale-105 transition-all')} onClick={onOpenModal}>
           <img className='object-cover rounded-3xl' src={props.Src} alt="" />
           <div className='pb-2'>
-              <div className='flex'>
-                  <div className='px-2 pt-2 text-2xl font-bold text-gray-400'>#{props.SongNum}</div>
-                  <div className='pl-3 text-xl pt-2 text-white'>{props.SongName}</div>
+              <div className='flex overflow-x-auto '>
+                  <div className='pt-1 text-2xl font-bold text-gray-400'>#{props.SongNum}</div>
+                  <div className='pl-4 text-xl pt-2 text-white text-left shrink-0 overflow-x-scroll'>{props.SongName}</div>
               </div>
-              <div className='text-left pl-5 text-gray-500'>{props.ArtistName}</div> 
+              <div className='text-left pl-5 text-gray-500 overflow-x-scroll shrink-0'>{props.ArtistName}</div> 
           </div>
-          {ModalOn && <SongModal CloseModal={logout} />}
+          <Modal open={isOpen} onClose={onCloseModal}>
+            <SongModal onCloseModal={onCloseModal}/>
+          </Modal>
       </div>
   );
 }

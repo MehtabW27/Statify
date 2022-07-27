@@ -1,26 +1,75 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MediumCardSong from '../mediumCardSong/medCardSong';
 import MediumCardArtist from '../mediumCardArtists/mediumCardArtists';
 import MediumCardAlbum from '../mediumCardAlbums/mediumCardAlbums';
 import TabBar from '../AnimatedTabBar/TabBar';
 import SongModal from '../modals/SongModal';
+import spotifyAPI from '../../ApiClient';
+import { useState } from 'react';
+import TwoTabBar from '../AnimatedTabBar/2TabBar';
+import NavBar from '../navBar/navBar';
+// {name: "init name"}
 
-function FavouritesPage() {
+function FavouritesPage(props) {
+
+  const [songs_6months, setSongs_6months] = useState([]);
+  const [songs_4weeks, setSongs_4weeks] = useState([]);
+  const [songs_lifetime, setSongs_lifetime] = useState([]);
+  const [artists_6months, setArtists_6months] = useState([]);
+  const [artists_4weeks, setArtists_4weeks] = useState([]);
+  const [artists_lifetime, setArtists_lifetime] = useState([]);
+  
+  const fetchData = async () => {
+    const result_s6m = await spotifyAPI.GetTop("tracks", "medium_term", "50", "0", window.localStorage.getItem("token"));
+    setSongs_6months(result_s6m);
+
+    const result_s4w = await spotifyAPI.GetTop("tracks", "short_term", "50", "0", window.localStorage.getItem("token"));
+    setSongs_4weeks(result_s4w);
+
+    const result_slt = await spotifyAPI.GetTop("tracks", "long_term", "50", "0", window.localStorage.getItem("token"));
+    setSongs_lifetime(result_slt);
+
+    const result_t6m = await spotifyAPI.GetTop("artists", "medium_term", "50", "0", window.localStorage.getItem("token"));
+    setArtists_6months(result_t6m);
+
+    const result_t4w = await spotifyAPI.GetTop("artists", "short_term", "50", "0", window.localStorage.getItem("token"));
+    setArtists_4weeks(result_t4w);
+
+    const result_tlt = await spotifyAPI.GetTop("artists", "long_term", "50", "0", window.localStorage.getItem("token"));
+    setArtists_lifetime(result_tlt);
+
+
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+
+
+
+
+
+
+  const logout = () => {
+    props.SEToken("");
+    window.localStorage.removeItem("token");
+    console.log("click")
+  }
+
+  // ArtistName={item.artists[0].name} Src={item.album.images[0].url} 
+
   return (
-    <div className="w-full p-6 bg-neutral-900 ">
+    <div className="w-full bg-neutral-900 ">
+      <NavBar TokenState={props.Token} LogOut={logout} />
       <div className=''>
-        <TabBar btn1={"Songs"} btn2={"Artists"} btn3={"Albums"}/>
+        <TabBar btn1={"4 Weeks"} btn2={"6 Months"} btn3={"Lifetime"} />
       </div>
       <div className="flex flex-wrap justify-center scroll-smooth overflow-y-scroll h-screen">
-
-        <MediumCardSong Src={"https://i0.wp.com/coolhunting.com/wp-content/uploads/2022/07/steve-lacy-bad-habit.jpg?fit=586%2C586ssl=1"} SongName={"Mercury"} ArtistName={"Steve Lacy"} SongNum={"3"} />
-
-        <MediumCardArtist Src={"https://i0.wp.com/coolhunting.com/wp-content/uploads/2022/07/steve-lacy-bad-habit.jpg?fit=586%2C586ssl=1"} ArtistNum={"4"} ArtistName={"Steve Lacy"}/>
-
-        <MediumCardAlbum Src={"https://i0.wp.com/coolhunting.com/wp-content/uploads/2022/07/steve-lacy-bad-habit.jpg?fit=586%2C586ssl=1"} AlbumName={"Gemini Rights"} ArtistName={"Steve Lacy"} AlbumNum={"66"} />
-        
+          {songs_6months.map((item, index) => (
+            <MediumCardSong SongName={item.name} ArtistName={item.artists[0].name} Src={item.album.images[0].url} SongNum={index + 1}/>
+          ))}
       </div>
-      <TabBar btn1={"4 Weeks"} btn2={"6 Months"} btn3={"Lifetime"} />
     </div>
   );
 }

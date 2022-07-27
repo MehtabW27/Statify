@@ -5,15 +5,10 @@ import SongDissection from '../SongDissection';
 import UserProfileCard from "../UserProfileCard";
 import ArtistTag from '../NormalArtistsComp';
 
-function SongModal(props) {
+function SongModal({onCloseModal}) {
 
 
   // setTimeout(() => {props.CloseModal();}, 1000);
-
-  const Foo = () => {
-    props.CloseModal();
-    console.log("foo called");
-  };
 
 
   return (
@@ -23,9 +18,10 @@ function SongModal(props) {
             
 
               <div className='flex shrink-0 overflow-hidden bg-[url("https://i0.wp.com/coolhunting.com/wp-content/uploads/2022/07/steve-lacy-bad-habit.jpg?fit=586%2C586ssl=1")] h-80 w-full bg-auto place-items-start ' >
-                <p onClick={Foo} >
+                <button onClick={onCloseModal} >
                   <i class="fa-solid fa-chevron-left p-6 text-3xl" ></i>
-                </p>
+                </button>
+                  
                 
                 </div>
               <div className="text-neutral-200 text-5xl text-left pr-3 py-3 pl-6 font-bold shadow-md border-b-2 rounded-md border-neutral-800 ">Song name</div>

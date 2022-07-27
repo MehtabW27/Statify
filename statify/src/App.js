@@ -4,6 +4,7 @@ import NavBar from './components/navBar/navBar';
 import FavouritesPage from './components/FavouritesPage/FavouritesPage';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import axios from 'axios';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   const REDIRECT_URI = "http://localhost:3000";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
+  const scope = 'user-top-read';
 
   const [token, setToken] = useState("");
 
@@ -23,22 +25,23 @@ function App() {
 
       window.location.hash = "";
       window.localStorage.setItem("token", token);
-      setToken(token);
     }
+
+    setToken(token);
   }, [])
 
 
-  const logout = () => {
-    setToken("");
-    window.localStorage.removeItem("token");
-  }
+  // const logout = () => {
+  //   setToken("");
+  //   window.localStorage.removeItem("token");
+  //   console.log("click")
+  // }
 
   return (
     <div className="App relative">
-      <NavBar TokenState={token} LogOut={logout} />
-      {!token && <a href={AUTH_ENDPOINT + '?client_id=' + CLIENT_ID + '&redirect_uri=' + REDIRECT_URI + '&response_type=' + RESPONSE_TYPE} onClick={() => {console.log(token)}} className="text-white text-3xl" >Login to spotify</a>}
+      {!token && <a href={AUTH_ENDPOINT + '?client_id=' + CLIENT_ID + '&redirect_uri=' + REDIRECT_URI + '&response_type=' + RESPONSE_TYPE + '&scope=' + scope} onClick={() => {console.log(token)}} className="text-white text-3xl" >Login to spotify</a>}
       {/* {token && <button className="text-neutral-900 text-lg font-bold py-2 px-4 m-4 bg-pearmint rounded-3xl " onClick={logout}>Log Out</button>} */}
-      <FavouritesPage/>
+      <FavouritesPage Token={token} SEToken={setToken} />
     </div>
   );
 }
