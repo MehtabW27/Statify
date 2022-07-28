@@ -57,18 +57,37 @@ function FavouritesPage(props) {
     console.log("click")
   }
 
+  const [TimeType, SetTimeType] = useState("4weeks");
+  const [CardType, SetCardType] = useState("songs");
+
   // ArtistName={item.artists[0].name} Src={item.album.images[0].url} 
 
   return (
     <div className="w-full bg-neutral-900 ">
-      <NavBar TokenState={props.Token} LogOut={logout} />
+      <NavBar TokenState={props.Token} LogOut={logout} SetsCardType={SetCardType} />
       <div className=''>
-        <TabBar btn1={"4 Weeks"} btn2={"6 Months"} btn3={"Lifetime"} />
+        <TabBar btn1={"4 Weeks"} btn2={"6 Months"} btn3={"Lifetime"} ChangeTimeType={SetTimeType}/>
       </div>
-      <div className="flex flex-wrap justify-center scroll-smooth overflow-y-scroll h-screen">
-          {songs_6months.map((item, index) => (
-            <MediumCardSong SongName={item.name} ArtistName={item.artists[0].name} Src={item.album.images[0].url} SongNum={index + 1}/>
+      <div className="flex flex-wrap justify-center scroll-smooth overflow-y-scroll h-screen p-6">
+          {((TimeType === "4weeks") && (CardType === "songs")) && songs_4weeks.map((item, index) => (
+            <MediumCardSong SongName={item.name} ArtistName={item.artists[0].name} Src={item.album.images[0].url} SongNum={index + 1} SongInfo={item}/>
           ))}
+
+          {((TimeType === "6months") && (CardType === "songs")) && songs_6months.map((item, index) => (
+            <MediumCardSong SongName={item.name} ArtistName={item.artists[0].name} Src={item.album.images[0].url} SongNum={index + 1} SongInfo={item}/>
+          ))}
+
+          {((TimeType === "lifetime") && (CardType === "songs")) && songs_lifetime.map((item, index) => (
+            <MediumCardSong SongName={item.name} ArtistName={item.artists[0].name} Src={item.album.images[0].url} SongNum={index + 1} SongInfo={item}/>
+          ))}
+
+
+          {((TimeType === "4weeks") && (CardType === "artists")) && artists_4weeks.map((item, index) => (
+            <MediumCardArtist ArtistName={item.name} Src={item.images[0].url} ArtistNum={index + 1} ArtistInfo={item}/>
+          ))}
+
+
+
       </div>
     </div>
   );

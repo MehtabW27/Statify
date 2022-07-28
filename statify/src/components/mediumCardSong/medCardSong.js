@@ -2,19 +2,23 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import SongModal from '../modals/SongModal';
 import Modal from 'react-responsive-modal';
+import ModalClass from '../modals/ModalClass';
 
 function MediumCardSong(props) {
 
     const [isOpen, setIsOpen] = useState(false);
 
-    useEffect(() => {
-        setIsOpen(false);
-    }, [isOpen])
+    // useEffect(() => {
+    //     setIsOpen(false);
+    // }, [isOpen])
 
     const onOpenModal = () => setIsOpen(true);
     const onCloseModal = () => {
         setIsOpen(false);
     }
+
+    console.log("state of song modal:", isOpen);
+    
 
   return (
       <div className={" flex flex-col  m-2 overflow-hidden duration-300 w-64 " + (isOpen ? 'transition-none' : 'hover:scale-105 transition-all')} onClick={onOpenModal}>
@@ -26,9 +30,7 @@ function MediumCardSong(props) {
               </div>
               <div className='text-left pl-5 text-gray-500 overflow-x-scroll shrink-0'>{props.ArtistName}</div> 
           </div>
-          <Modal open={isOpen} onClose={onCloseModal}>
-            <SongModal onCloseModal={onCloseModal}/>
-          </Modal>
+          {isOpen && < SongModal onCloseModal={onCloseModal} SongInfO={props.SongInfo} IsOpen={isOpen} /> }
       </div>
   );
 }

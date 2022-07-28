@@ -10,8 +10,9 @@ function ArtistModal(props) {
 
 
 //   setTimeout(() => {props.CloseModal(false)}, 1000)
+     const data = props.ArtistInfO;
 
-  
+     console.log("shit the artist modal gets",data)
 
 
 
@@ -21,19 +22,21 @@ function ArtistModal(props) {
             <div className="bg-neutral-900 border-4 border-pearmint rounded-xl text-xl text-white flex flex-col w-4/5 h-4/5 overflow-y-scroll" >
             
 
-              <div className='flex shrink-0 overflow-hidden bg-[url("https://i0.wp.com/coolhunting.com/wp-content/uploads/2022/07/steve-lacy-bad-habit.jpg?fit=586%2C586ssl=1")] h-80 w-full bg-auto place-items-start ' >
-                <i class="fa-solid fa-chevron-left p-6 text-3xl" onClick={() => {
-                  props.CloseModal(false);
-                }}></i>
+              <div className='flex shrink-0 overflow-hidden h-96 w-full bg-cover bg-center place-items-start ' style={{backgroundImage: "url(" + data.images[0].url + ")"}} >
+                <button onClick={props.onCloseModal} >
+                  <i class="fa-solid fa-chevron-left p-6 text-3xl" ></i>
+                </button>
+                  
+                
                 </div>
-              <div className="text-neutral-200 text-5xl text-left pr-3 py-3 pl-6 font-bold shadow-md border-b-2 rounded-md border-neutral-800 ">Artist name</div>
+              <div className="text-neutral-200 text-5xl text-left pr-3 py-3 pl-6 font-bold shadow-md border-b-2 rounded-md border-neutral-800 ">{data.name}</div>
 
 
               {/* tags regarding info about song */}
               <div className="flex flex-wrap justify-center scroll-smooth border-b-2 border-neutral-800">
 
-              <InfoTag BigText={"7.7"} SmallText={"0-10 popularity"} />
-              <InfoTag BigText={"64,686,910"} SmallText={"followers"} />
+              <InfoTag BigText={data.popularity} SmallText={"0-100 popularity"} />
+              <InfoTag BigText={data.followers.total} SmallText={"followers"} />
               <InfoTag BigText={"#3"} SmallText={"of your most streamed artists during your lifetime"} />
               <InfoTag BigText={"#2"} SmallText={"of your most streamed artists during the past six months"} />
               <InfoTag BigText={"#5"} SmallText={"of your most streamed artists during the past 4 weeks"} />

@@ -24,12 +24,18 @@ function NavBar(props) {
 
 
 
-                <div className={"font-semibold text-2xl text-neutral-400" + (type === "tracks" ? ' active text-pearmint' : ' hover:text-gray-300' )} onClick={() => {setType("tracks")}}>
+                <div className={"font-semibold text-2xl text-neutral-400 p-2 m-2" + (type === "tracks" ? ' active text-pearmint' : ' hover:text-gray-300' )} onClick={() => {
+                    setType("tracks");
+                    props.SetsCardType("songs")
+                    }}>
                     <i class="fa-brands fa-itunes-note p-1 mr-1"></i>
                     Songs
                 </div>
 
-                <div className={"font-semibold text-neutral-400 text-2xl" + (type === "artists" ? ' active text-pearmint' : ' hover:text-gray-300' )} onClick={() => {setType("artists")}}>
+                <div className={"font-semibold text-neutral-400 text-2xl p-2 m-2" + (type === "artists" ? ' active text-pearmint' : ' hover:text-gray-300' )} onClick={() => {
+                    setType("artists");
+                    props.SetsCardType("artists");
+                }}>
                     <i class="fa-solid fa-headphones-simple p-1 mr-1"></i>
                     Artists
                 </div>
