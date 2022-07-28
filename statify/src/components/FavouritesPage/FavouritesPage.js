@@ -86,6 +86,14 @@ function FavouritesPage(props) {
             <MediumCardArtist ArtistName={item.name} Src={item.images[0].url} ArtistNum={index + 1} ArtistInfo={item}/>
           ))}
 
+          {((TimeType === "6months") && (CardType === "artists")) && artists_6months.map((item, index) => (
+            <MediumCardArtist ArtistName={item.name} Src={item.images[0].url} ArtistNum={index + 1} ArtistInfo={item}/>
+          ))}
+
+          {((TimeType === "lifetime") && (CardType === "artists")) && artists_lifetime.map((item, index) => (
+            <MediumCardArtist ArtistName={item.name} Src={item.images[0].url} ArtistNum={index + 1} ArtistInfo={item}/>
+          ))}
+
 
 
       </div>

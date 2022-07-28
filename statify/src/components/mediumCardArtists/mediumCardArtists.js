@@ -31,6 +31,7 @@ export default MediumCardArtist;
 
 
 
+// eslint-disable-next-line no-lone-blocks
 {/* <div className={" flex flex-col  m-2 overflow-hidden duration-300 w-52 h-72 " + (ArtistModalOn ? 'transition-none' : 'hover:scale-105 transition-all')} onClick={() => {SetArtistModal(true)}}>
 <img className='object-cover rounded-3xl' src={props.Src} alt="" />
 <div className='pb-2 flex place-items-center'>

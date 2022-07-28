@@ -5,7 +5,7 @@ import FavouritesPage from './components/FavouritesPage/FavouritesPage';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
-
+import LoginPage from './components/loginpage';
 
 function App() {
   const CLIENT_ID = "18cb6bd064e24bcb9acebc5955db5101";
@@ -39,11 +39,14 @@ function App() {
 
   return (
     <div className="App relative">
-      {!token && <a href={AUTH_ENDPOINT + '?client_id=' + CLIENT_ID + '&redirect_uri=' + REDIRECT_URI + '&response_type=' + RESPONSE_TYPE + '&scope=' + scope} onClick={() => {console.log(token)}} className="text-white text-3xl" >Login to spotify</a>}
-      {/* {token && <button className="text-neutral-900 text-lg font-bold py-2 px-4 m-4 bg-pearmint rounded-3xl " onClick={logout}>Log Out</button>} */}
+      {!token && <LoginPage Src={AUTH_ENDPOINT + '?client_id=' + CLIENT_ID + '&redirect_uri=' + REDIRECT_URI + '&response_type=' + RESPONSE_TYPE + '&scope=' + scope} ClickFunction={() => {console.log(token)}} />}
       <FavouritesPage Token={token} SEToken={setToken} />
     </div>
   );
 }
 
 export default App;
+
+// eslint-disable-next-line no-lone-blocks
+{/* {!token && <a href={AUTH_ENDPOINT + '?client_id=' + CLIENT_ID + '&redirect_uri=' + REDIRECT_URI + '&response_type=' + RESPONSE_TYPE + '&scope=' + scope} onClick={() => {console.log(token)}} className="text-black text-3xl" >Login to spotify</a>} */}
+      {/* {token && <button className="text-neutral-900 text-lg font-bold py-2 px-4 m-4 bg-pearmint rounded-3xl " onClick={logout}>Log Out</button>} */}

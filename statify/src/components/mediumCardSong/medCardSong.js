@@ -17,7 +17,6 @@ function MediumCardSong(props) {
         setIsOpen(false);
     }
 
-    console.log("state of song modal:", isOpen);
     
 
   return (
