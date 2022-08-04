@@ -9,7 +9,7 @@ import { useState } from "react";
 function NavBar(props) {
 
 
-    const [type, setType] = useState("tracks");
+    const [type1, setType1] = useState("tracks");
     return (
         <nav className="relative mx-auto p-1 shadow-xl bg-zinc-800">
             {/* flex container */}
@@ -24,16 +24,16 @@ function NavBar(props) {
 
 
 
-                <div className={"font-semibold text-2xl text-neutral-400 p-2 m-2" + (type === "tracks" ? ' active text-pearmint' : ' hover:text-gray-300' )} onClick={() => {
-                    setType("tracks");
+                <div className={"font-semibold text-2xl text-neutral-400 p-2 m-2" + (type1 === "tracks" ? ' active text-pearmint' : ' hover:text-gray-300' )} onClick={() => {
+                    setType1("tracks");
                     props.SetsCardType("songs")
                     }}>
                     <i class="fa-brands fa-itunes-note p-1 mr-1"></i>
                     Songs
                 </div>
 
-                <div className={"font-semibold text-neutral-400 text-2xl p-2 m-2" + (type === "artists" ? ' active text-pearmint' : ' hover:text-gray-300' )} onClick={() => {
-                    setType("artists");
+                <div className={"font-semibold text-neutral-400 text-2xl p-2 m-2" + (type1 === "artists" ? ' active text-pearmint' : ' hover:text-gray-300' )} onClick={() => {
+                    setType1("artists");
                     props.SetsCardType("artists");
                 }}>
                     <i class="fa-solid fa-headphones-simple p-1 mr-1"></i>

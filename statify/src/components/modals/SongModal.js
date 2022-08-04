@@ -7,6 +7,17 @@ import ArtistTag from '../NormalArtistsComp';
 import spotifyAPI from '../../ApiClient';
 
 function SongModal(props) {
+  const [isOpen, setIsOpen] = useState({show: props.IsOpen.show});
+  
+  console.log("Song Modal: state of song modal:", JSON.stringify(isOpen));
+
+  // const update = () => {
+  //   setIsOpen({show: !isOpen.show});
+  // }
+
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({ data: nextProps.data });  
+  // }
 
   function millisToMinutesAndSeconds(millis) {
     var minutes = Math.floor(millis / 60000);
@@ -34,7 +45,10 @@ function SongModal(props) {
     AudioFeaturesFetchData();
   }, []);
 
-
+  useEffect(() => {
+    console.log('useEffect is called: ');
+    setIsOpen({show: props.IsOpen.show});
+  }, [props.IsOpen]);
 
 
 
@@ -103,7 +117,8 @@ function SongModal(props) {
     }
   }
 
-  if (!props.IsOpen) {
+  if (!isOpen.show) {  
+    console.log('modul null returned;');  
     return null;
   }
   return (
@@ -113,7 +128,7 @@ function SongModal(props) {
             
 
               <div className='flex shrink-0 overflow-hidden h-96 w-full bg-cover bg-center place-items-start ' style={{backgroundImage: "url(" + dataSong.album.images[0].url + ")"}} >
-                <button onClick={props.onCloseModal} >
+                <button onClick={() => { props.onCloseModal();}} >
                   <i class="fa-solid fa-chevron-left p-6 text-3xl" ></i>
                 </button>
                   
