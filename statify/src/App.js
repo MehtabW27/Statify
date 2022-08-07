@@ -13,6 +13,7 @@ function App() {
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const scope = 'user-top-read';
+  const SHOW_DIALOG = true;
 
   const [token, setToken] = useState("");
 
@@ -39,7 +40,7 @@ function App() {
 
   return (
     <div className="App relative">
-      {!token && <LoginPage Src={AUTH_ENDPOINT + '?client_id=' + CLIENT_ID + '&redirect_uri=' + REDIRECT_URI + '&response_type=' + RESPONSE_TYPE + '&scope=' + scope} ClickFunction={() => {console.log(token)}} />}
+      {!token && <LoginPage Src={AUTH_ENDPOINT + '?client_id=' + CLIENT_ID + '&redirect_uri=' + REDIRECT_URI + '&response_type=' + RESPONSE_TYPE + '&scope=' + scope + '&show_dialog=' + SHOW_DIALOG} ClickFunction={() => {console.log(token)}} />}
       <FavouritesPage Token={token} SEToken={setToken} />
     </div>
   );

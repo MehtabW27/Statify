@@ -24,15 +24,41 @@ function SongModal(props) {
 
 
   const [AudioFeaturesData, SetAudioFeaturesData] = useState({});
+
+  const [artistsDataArray, setArtistsDataArray] = useState([]);
+  const artistarray = dataSong.artists;
+
+  console.log("this is the initial artist array before api", artistarray)
+
+
   const AudioFeaturesFetchData = async () => {
     const response = await spotifyAPI.GetAudioFeatures(songID, window.localStorage.getItem("token"));
-    SetAudioFeaturesData(response);
+    SetAudioFeaturesData(response)
 
   };
 
+  const ArrayOfArtistInfoFetchData = () => {
+    artistarray.forEach(artist => {
+      const artistresponse = spotifyAPI.GetArtist(artist.id, window.localStorage.getItem("token"));
+      console.log("artist response", artistresponse)
+      artistresponse.then(res => {
+        artistsDataArray.push(res);
+      });
+    });
+  }
+
+  
+
+
+
+
   useEffect(() => {
     AudioFeaturesFetchData();
+    ArrayOfArtistInfoFetchData();
   }, []);
+
+
+  console.log("this is the final artist info array", artistsDataArray);
 
 
 

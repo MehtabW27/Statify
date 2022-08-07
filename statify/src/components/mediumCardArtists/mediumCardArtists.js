@@ -14,16 +14,18 @@ function MediumCardArtist(props) {
     
 
   return (
-    <div className={" flex flex-col  m-2 overflow-hidden duration-300 w-64 " + (ArtistModalOn ? ' transition-none' : ' hover:scale-105 transition-all')} onClick={onOpenModal}>
-          <img className='object-cover rounded-3xl aspect-square' src={props.Src} alt="" />
-          <div className='pb-2'>
-              <div className='flex overflow-x-auto '>
-                  <div className='pt-1 text-2xl font-bold text-gray-400'>#{props.ArtistNum}</div>
-                  <div className='pl-4 text-xl pt-2 text-white text-left shrink-0 overflow-x-scroll'>{props.ArtistName}</div>
-              </div>
-          </div>
-          {ArtistModalOn && <ArtistModal onCloseModal={onCloseModal} ArtistInfO={props.ArtistInfo} />}
-      </div>  
+    <div>
+      <div className={" flex flex-col  m-2 overflow-hidden duration-300 w-64 " + (ArtistModalOn ? ' transition-none' : ' hover:scale-105 transition-all')} onClick={onOpenModal}>
+            <img className='object-cover rounded-3xl aspect-square' src={props.Src} alt="" />
+            <div className='pb-2'>
+                <div className='flex overflow-x-auto '>
+                    <div className='pt-1 text-2xl font-bold text-gray-400'>#{props.ArtistNum}</div>
+                    <div className='pl-4 text-xl pt-2 text-white text-left shrink-0 overflow-x-scroll'>{props.ArtistName}</div>
+                </div>
+            </div>
+        </div> 
+        {ArtistModalOn && <ArtistModal onCloseModal={onCloseModal} ArtistInfO={props.ArtistInfo} />}
+      </div> 
   );
 }
 
