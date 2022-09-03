@@ -195,7 +195,7 @@ function SongModal(props) {
                   
                 ))} */}
 
-                <ArtistTag Src={"https://i.scdn.co/image/ab67616d0000b273fcd3724fba954e6104e4530d"} ArtistName={"Joey Bada$$"} />
+                <ArtistTag ArtistName={dataSong.artists[0].name} />
               </div>
               {/* end of artist section */}
 

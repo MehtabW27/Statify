@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import SongModal from '../modals/SongModal';
-import Modal from 'react-responsive-modal';
 import ModalClass from '../modals/ModalClass';
 
 function MediumCardSong(props) {
