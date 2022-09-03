@@ -9,7 +9,7 @@ import LoginPage from './components/loginpage';
 
 function App() {
   const CLIENT_ID = "18cb6bd064e24bcb9acebc5955db5101";
-  const REDIRECT_URI = "http://localhost:3000";
+  const REDIRECT_URI = "https://git.heroku.com/statif-y.git";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const scope = 'user-top-read';
