@@ -15,7 +15,7 @@ function MediumCardSong(props) {
     const onCloseModal = () => {
         setIsOpen(false);
     }
-    console.log("image source:", props.Src)
+   // console.log("image source:", props.Src)
 
     
 

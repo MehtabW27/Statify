@@ -20,30 +20,41 @@ function FavouritesPage(props) {
   const [artists_lifetime, setArtists_lifetime] = useState([]);
   
   const fetchData = async () => {
-    const result_s6m = await spotifyAPI.GetTop("tracks", "medium_term", "50", "0", window.localStorage.getItem("token"));
-    setSongs_6months(result_s6m);
+    const tokEn = window.localStorage.getItem("token")
 
-    const result_s4w = await spotifyAPI.GetTop("tracks", "short_term", "50", "0", window.localStorage.getItem("token"));
-    setSongs_4weeks(result_s4w);
+    if (!!tokEn) {
+      
+      const result_s6m = await spotifyAPI.GetTop("tracks", "medium_term", "50", "0", tokEn);
+      setSongs_6months(result_s6m);
+      console.log("medium song", result_s6m);
+      const x = result_s6m.filter(y => 
+        y.album.images == 'undefined'
+      );
+      console.log('dummy', x);
 
-    const result_slt = await spotifyAPI.GetTop("tracks", "long_term", "50", "0", window.localStorage.getItem("token"));
-    setSongs_lifetime(result_slt);
-
-    const result_t6m = await spotifyAPI.GetTop("artists", "medium_term", "50", "0", window.localStorage.getItem("token"));
-    setArtists_6months(result_t6m);
-
-    const result_t4w = await spotifyAPI.GetTop("artists", "short_term", "50", "0", window.localStorage.getItem("token"));
-    setArtists_4weeks(result_t4w);
-
-    const result_tlt = await spotifyAPI.GetTop("artists", "long_term", "50", "0", window.localStorage.getItem("token"));
-    setArtists_lifetime(result_tlt);
-
+      const result_s4w = await spotifyAPI.GetTop("tracks", "short_term", "50", "0", window.localStorage.getItem("token"));
+      setSongs_4weeks(result_s4w);
+      
+      const result_slt = await spotifyAPI.GetTop("tracks", "long_term", "50", "0", window.localStorage.getItem("token"));
+      setSongs_lifetime(result_slt);
+      
+      const result_t6m = await spotifyAPI.GetTop("artists", "medium_term", "50", "0", window.localStorage.getItem("token"));
+      setArtists_6months(result_t6m);
+      
+      const result_t4w = await spotifyAPI.GetTop("artists", "short_term", "50", "0", window.localStorage.getItem("token"));
+      setArtists_4weeks(result_t4w);
+      
+      const result_tlt = await spotifyAPI.GetTop("artists", "long_term", "50", "0", window.localStorage.getItem("token"));
+      setArtists_lifetime(result_tlt);
+    }
+      
 
   };
 
   useEffect(() => {
     fetchData();
   }, [])
+
 
 
 
